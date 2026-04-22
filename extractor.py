@@ -82,7 +82,7 @@ Email:
             print("JSON ERROR TEXT:", text)
             return None
 
-        # 🔥 FALLBACK ROLE FIX
+        #FALLBACK ROLE FIX
         if not data.get("role"):
             fallback_role = fallback_role_detection(email_text)
             if fallback_role:

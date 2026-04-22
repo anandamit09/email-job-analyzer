@@ -26,7 +26,7 @@ if st.button("Analyze Emails"):
     for i, email in enumerate(emails):
         text = email["subject"] + "\n" + email["body"]
 
-        # 🔥 FILTER NON-JOB EMAILS (improves accuracy)
+        #FILTER NON-JOB EMAILS (improves accuracy)
         if not any(word in text.lower() for word in [
             "job", "placement", "hiring", "role", "ctc", "package", "lpa"
         ]):
@@ -42,10 +42,10 @@ if st.button("Analyze Emails"):
     if results:
         df = pd.DataFrame(results)
 
-        # 🔥 CLEAN DATA
+        #CLEAN DATA
         df = df.drop_duplicates()
 
-        # Remove useless rows
+        #Remove useless rows
         df = df[
             df["role"].notna() |
             df["package"].notna() |
@@ -55,7 +55,7 @@ if st.button("Analyze Emails"):
         st.success("Extraction Complete!")
         st.dataframe(df)
 
-        # Save Excel
+        #Save Excel
         file_path = "output.xlsx"
         df.to_excel(file_path, index=False)
 
